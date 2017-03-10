@@ -34,6 +34,7 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
+            $table->string('value');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
