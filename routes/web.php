@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function() {
 	Route::resource('products', 'ProductsController');
+	Route::resource('categories', 'CategoriesController');
 });
