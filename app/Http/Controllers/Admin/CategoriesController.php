@@ -26,9 +26,17 @@ class CategoriesController extends Controller
     {
     	$category = new Category();
 
-    	$category->fill($request->all());
+    	$category->fill($request->only('name'));
 
     	if ($category->save()) {
+
+            $category->translateOrNew('en')->name = $request->get('name');
+            if ($request->has('name_fr')) {
+                $category->translateOrNew('fr')->name = $request->get('name_fr');
+            }
+
+            $category->save();
+
     		return redirect()->route('categories.index')->with('success', 'Cagtegory created.');
     	}
     }

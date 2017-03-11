@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]], function(){
+
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+
+	Auth::routes();
+
+	Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function() {
+		Route::resource('products', 'ProductsController');
+		Route::resource('categories', 'CategoriesController');
+	});
 });
 
-Auth::routes();
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function() {
-	Route::resource('products', 'ProductsController');
-	Route::resource('categories', 'CategoriesController');
-});
