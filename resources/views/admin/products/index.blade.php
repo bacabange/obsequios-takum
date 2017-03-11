@@ -34,7 +34,7 @@
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-xs btn-success">Edit</a>
+                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-success">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach

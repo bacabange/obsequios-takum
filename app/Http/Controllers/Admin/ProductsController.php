@@ -50,4 +50,29 @@ class ProductsController extends Controller
     		return redirect()->route('products.index')->with('success', 'Product created.');
     	}
     }
+
+    public function edit(Product $product)
+    {
+        $categories = Category::get();
+        return view('admin.products.edit', compact('product', 'categories'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        // save translations
+        $product->translate('en')->title = $request->get('title');
+        $product->translate('en')->description = $request->get('description');
+
+        if ($request->has('title_fr')) {
+            $product->translate('fr')->title = $request->get('title_fr');
+        }
+
+        if ($request->has('description_fr')) {
+            $product->translate('fr')->description = $request->get('description_fr');
+        }
+
+        $product->save();
+
+        return redirect()->route('products.index')->with('success', 'Product updated.');
+    }
 }
