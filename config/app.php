@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Dimsav\Translatable\TranslatableServiceProvider::class,
-        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
@@ -229,7 +229,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'LaravelLocalization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
     ],
 
 ];

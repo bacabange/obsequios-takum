@@ -7,24 +7,23 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use App\User;
+use App\Category;
+use App\Product;
 
-class ExampleTest extends TestCase
+class ApiProductsTest extends TestCase
 {
     use DatabaseMigrations;
+
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_list_products()
     {
-        $name = 'Stiven';
+    	$product = factory(Product::class, 10)->create();
 
-        $user = factory(User::class)->create([
-            'name' => $name
-        ]);
-        
-        $response = $this->actingAs($user, 'api')->get('/');
+        $this->assertTrue(true);
+
     }
 }

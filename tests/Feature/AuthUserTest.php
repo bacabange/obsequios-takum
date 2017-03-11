@@ -7,24 +7,15 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use App\User;
-
-class ExampleTest extends TestCase
+class AuthUserTest extends TestCase
 {
-    use DatabaseMigrations;
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_auth_user()
     {
-        $name = 'Stiven';
-
-        $user = factory(User::class)->create([
-            'name' => $name
-        ]);
-        
-        $response = $this->actingAs($user, 'api')->get('/');
+        $this->assertTrue(true);
     }
 }
