@@ -29,8 +29,9 @@ class CategoriesController extends Controller
     	$category->fill($request->only('name'));
 
     	if ($category->save()) {
-
+            // save translations
             $category->translateOrNew('en')->name = $request->get('name');
+
             if ($request->has('name_fr')) {
                 $category->translateOrNew('fr')->name = $request->get('name_fr');
             }
@@ -39,5 +40,24 @@ class CategoriesController extends Controller
 
     		return redirect()->route('categories.index')->with('success', 'Cagtegory created.');
     	}
+    }
+
+    public function edit(Category $category)
+    {
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        // save translations
+        $category->translate('en')->name = $request->get('name');
+
+        if ($request->has('name_fr')) {
+            $category->translate('fr')->name = $request->get('name_fr');
+        }
+
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success', 'Cagtegory updated.');
     }
 }

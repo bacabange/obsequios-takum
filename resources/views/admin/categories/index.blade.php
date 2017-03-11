@@ -28,11 +28,11 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($categories as $categoria)
+                            @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $categoria->name }}</td>
+                                    <td>{{ $category->name }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-xs btn-success">Edit</a>
+                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-xs btn-success">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
