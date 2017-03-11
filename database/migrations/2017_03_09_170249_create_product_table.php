@@ -31,8 +31,6 @@ class CreateProductTable extends Migration
 
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('description');
             $table->string('value');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
@@ -44,7 +42,7 @@ class CreateProductTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('name');
+            $table->string('title');
             $table->text('description');
 
             $table->unique(['product_id','locale']);
