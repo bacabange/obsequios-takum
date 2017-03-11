@@ -20,21 +20,25 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'type' => $faker->randomElement(['user', 'admin']),
+        'api_token' => str_random(60),
         'remember_token' => str_random(10),
     ];
 });
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word
+        'name:en' => $faker->word,
+        'name:fr' => $faker->word
     ];
 });
 
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) use ($factory) {
 	return [
-        'title' => $faker->word,
-        'description' => $faker->sentence(),
+        'title:en' => $faker->word,
+        'description:en' => $faker->sentence(),
+        'title:fr' => $faker->word,
+        'description:fr' => $faker->sentence(),
 		'value' => $faker->randomNumber(4),
 		'category_id' => factory(App\Category::class)->create()->id
 	];

@@ -178,7 +178,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Dimsav\Translatable\TranslatableServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
